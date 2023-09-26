@@ -1,0 +1,9 @@
+version: '1'
+
+services:
+  mediamtx:
+    image: bluenviron/mediamtx:latest-ffmpeg
+    network_mode: host
+  ffmpeg-listener:
+    build:
+      context: ./ffmpeg-rtsp

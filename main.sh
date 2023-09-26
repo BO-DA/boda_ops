@@ -1,6 +1,3 @@
-# run docker container 
-docker run --rm -it --network=host bluenviron/mediamtx:latest
+#!/bin/bash
 
-# run docker container ffmpeg-rtsp
-docker build -t ffmpeg-rtsp:latest ffmpeg-rtsp/
-docker run ffmpeg-rtsp:latest
+docker-compose up --build
