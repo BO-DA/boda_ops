@@ -7,3 +7,4 @@ services:
   ffmpeg-listener:
     build:
       context: ./ffmpeg-rtsp
+    network_mode: host
