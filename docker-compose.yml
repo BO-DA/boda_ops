@@ -1,4 +1,4 @@
-version: '1'
+version: '3'
 
 services:
   mediamtx:
@@ -8,3 +8,20 @@ services:
     build:
       context: ./ffmpeg-rtsp
     network_mode: host
+  boda-ai-server:
+    image: pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+    container_name: boda-ai-server
+    hostname: boda-ai-server
+    network_mode: host
+    volumes:
+      - ./boda-ai:/home/boda-ai
+      - ./boda-ai-server.sh:/home/boda/boda-ai-server.sh
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
