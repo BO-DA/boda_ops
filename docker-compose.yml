@@ -16,6 +16,8 @@ services:
     volumes:
       - ./boda-ai:/home/boda-ai
       - ./boda-ai-server.sh:/home/boda/boda-ai-server.sh
+      - ./socket-server/SocketIOServer.java:/home/boda/SocketIOServer.java
+      - /tmp/.X11-unix:/tmp/.X11-unix
     stdin_open: true
     tty: true
     deploy:
@@ -25,3 +27,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    environment:
+      - DISPLAY=:0  # Set the display environment variable
+    devices:
+      - /dev/dri:/dev/dri
