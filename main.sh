@@ -1,6 +1,6 @@
-rm -rf boda-ai-git
+rm -rf boda-ai
 
-git clone https://github.com/BO-DA/boda_AI boda-ai-git
+git clone https://github.com/BO-DA/boda_AI boda-ai
 
 docker compose up --build -d
 
