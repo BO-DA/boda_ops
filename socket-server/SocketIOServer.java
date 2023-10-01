@@ -1,13 +1,11 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Date;
+import java.nio.file.Paths;
 
 public class SocketIOServer {
 
@@ -20,7 +18,9 @@ public class SocketIOServer {
         int port = Integer.parseInt(args[0]);
 
         // 읽을 파일의 경로 및 파일명 지정
-        String filePath = "/Users/jinjae/Code/Jinjae/Project/Hackerthon/boda_ops/socket-server/res.txt";
+        String currentDirectory = System.getProperty("user.dir");
+        String filePath = "res.txt";
+        String absolutePath = Paths.get(currentDirectory, filePath).toString();
         String line = "";
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
@@ -35,7 +35,7 @@ public class SocketIOServer {
 
                 try {
                     // FileReader와 BufferedReader를 사용하여 파일 읽기
-                    FileReader fileReader = new FileReader(filePath);
+                    FileReader fileReader = new FileReader(absolutePath);
                     BufferedReader bufferedReader = new BufferedReader(fileReader);
 
                     // 파일의 끝까지 한 줄씩 읽어오기
